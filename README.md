@@ -1,23 +1,23 @@
-
+ 
 ## NY Apartment listing price prediction using Zillow API
-
+ 
 ![App Screenshot](https://cdn.vox-cdn.com/thumbor/n__W88RH2lLfwikcCFBISLOxreE=/0x0:2000x1333/1200x800/filters:focal(837x619:1157x939)/cdn.vox-cdn.com/uploads/chorus_image/image/65368722/171109_06_27_03_5DS_9686.0.jpg)
-
+ 
 ### Project Overview
 ---
 * Created fine-tuned machine learning models that predicts listing price of apartments in New York based on data from custom-made Zillow API.
-* Engineered features using latitude and longitude columns to link geospatial provided data with model to improve model perfomance.
+* Engineered features using latitude and longitude columns to link geospatial provided data with model to improve model performance.
 ---
 ### How will this project help?
-* This project can help with determining fair value for apartment in NY. Later this information could be used as a way to make right decisions while purchasing, selling apartments or when looking for investment opportunities that are connected with Real Estate market.
+* This project can help with determining fair value for apartments in NY. Later this information could be used as a way to make right decisions while purchasing, selling apartments or when looking for investment opportunities that are connected with Real Estate market.
 ---
 ### Resources used
 * *packages: pandas, numpy, matplotlib, seaborn, plotly, folium, squarify, missingno, datetime, sklearn, google.colab*
 * *Data: Custom-made Zillow API* - [Link for API](https://rapidapi.com/apimaker/api/zillow-com1/)
---- 
+---
 ### Details of project
-* This project were built using Google Colab. Also, Google Drive were used in order to save and transport dataframe. To hide API keys I also used pre-made .csv file containing access to private API key. For simplicity, project were divided into 2 notebooks. **GettingData.ipynb** - contains process of extracting data from APi. **EDA&Building_model.ipynb** - contains processes of cleaning, EDA, building model, fine_tuning.
---- 
+* This project was built using Google Colab. Also, Google Drive was used in order to save and transport dataframe. To hide API keys I also used a pre-made .csv file containing access to private API keys. For simplicity, project were divided into 2 notebooks. **GettingData.ipynb** - contains the process of extracting data from APi. **EDA&Building_model.ipynb** - contains processes of cleaning, EDA, building model, fine_tuning.
+---
 ### Phases in EDA&Building_model notebook
 1. Installation & Import of required libraries
 2. Structure Investigation
@@ -32,39 +32,39 @@
 ---
 ### Feature Engineered features
 * `distance`- Feature that was created by using information from `longitude` and `latitude` features and then using coordinates of Empire State building. Finally, by using *Haversine Formula* distance between two points were calculated.
-* Where distance to Empire State Building were used?  - Because this resulted in better score compared with other places used for this feature. You could seen in the code block below which coordinates were also used and tested for `distance` feature.
+* Where distance to the Empire State Building was used?  - Because this resulted in a better score compared with other places used for this feature. You could see in the code block below which coordinates were also used and tested for `distance` feature.
 ``` df['latitude_empier_state_building'] =40.748500421093865
 df['longitude_empier_state_building'] = -73.98556979674355
-# 40.748500421093865, -73.98556979674355 Empier State Building 
+# 40.748500421093865, -73.98556979674355 Empire State Building
 # 40.752640832162534, -73.97738783463491 - Main Railway station
 # 40.64957748302697, -73.79345274856009 - John F. Kennedy International Airport
-# 40.7671676305183, -73.97889716461052 - Entry to Central Park 
+# 40.7671676305183, -73.97889716461052 - Entry to Central Park
 ```
 ---
 ### Models:
 * Dataframe containing results of models (sorted by RMSE) :
 |Model Name| MSE | RMSE            |MAE |
 | -----------|:----:|:-----:|-------------:|
-|Gradient Boosting Regressor| 5.571270e+11| 	7.464094e+05	| 392396.574008 |
-|Ridge| 1.180788e+12    | 1.086641e+06	 | 857828.752436 |
-|Random Forest | 1.180788e+12	     | 1.086641e+06| 857828.752436 |
+|Gradient Boosting Regressor| 5.571270e+11|     7.464094e+05    | 392396.574008 |
+|Ridge| 1.180788e+12    | 1.086641e+06   | 857828.752436 |
+|Random Forest | 1.180788e+12        | 1.086641e+06| 857828.752436 |
 |Lasso|1.227134e+12| 1.107761e+06| 860146.785070 |
-|Linear Regression|1.227149e+12|	1.107767e+06|860146.628601|
+|Linear Regression|1.227149e+12|    1.107767e+06|860146.628601|
 |Ada Boosting Regressor|1.358955e+12|1.165742e+06|922655.947784|
-|Decision Tree Regressor	|1.898786e+12|1.377964e+06|545150.062500|
+|Decision Tree Regressor    |1.898786e+12|1.377964e+06|545150.062500|
 * Plot containing results of models:
 ![plot with model results](https://snipboard.io/ec4rdV.jpg)
-
+ 
 ### Model choice and fine-tuning
-* GradientBoostingRegressor for further exploration due to big difference in scores compared with results of other models. First of all, I tried to manually determine optimal range of values for given parameters, after that GridSearchCV with KFold were used for further fine-tuning.
+* GradientBoostingRegressor for further exploration due to a big difference in scores compared with results of other models. First of all, I tried to manually determine the optimal range of values for given parameters, after that GridSearchCV with KFold were used for further fine-tuning.
 ```
 params ={
-    'max_depth':[5, 6, 7, 8, 9],
-    'learning_rate': [0.25, 0.3, 0.4, 0.5, 0.6],
-    'n_estimators': [300, 400, 500, 600, 700],
-    'subsample': [0.3, 0.4, 0.5, 0.6, 0.7]
+   'max_depth':[5, 6, 7, 8, 9],
+   'learning_rate': [0.25, 0.3, 0.4, 0.5, 0.6],
+   'n_estimators': [300, 400, 500, 600, 700],
+   'subsample': [0.3, 0.4, 0.5, 0.6, 0.7]
 }
-
+ 
 folds = 10
 model = GradientBoostingRegressor()
 kf = KFold(n_splits=folds, shuffle=True, random_state=1)
@@ -74,7 +74,7 @@ gridsearch = GridSearchCV(model, param_grid=params, scoring="neg_mean_squared_er
 |Model Name| MSE | RMSE            |MAE |
 | -----------|:----:|:-----:|-------------:|
 |Gradient Boosting Regressor| 8.065473e+10| 283997.761376|204007.123004|
-
+ 
 ---
 ### Interpretability of model
 * For this purpose, SHAP package were used.
@@ -88,3 +88,4 @@ Plot shows how complex model arrive at their prediction for randomly choosen row
 ![plot with model results](https://snipboard.io/V48zof.jpg)
 Plot shows how complex model arrive at their prediction for randomly choosen random row 25:
 ![plot with model results](https://snipboard.io/FnyBDf.jpg)
+
