@@ -43,15 +43,7 @@ df['longitude_empier_state_building'] = -73.98556979674355
 ---
 ### Models:
 * Dataframe containing results of models (sorted by RMSE) :
-|Model Name| MSE | RMSE            |MAE |
-| -----------|:----:|:-----:|-------------:|
-|Gradient Boosting Regressor| 5.571270e+11|     7.464094e+05    | 392396.574008 |
-|Ridge| 1.180788e+12    | 1.086641e+06   | 857828.752436 |
-|Random Forest | 1.180788e+12        | 1.086641e+06| 857828.752436 |
-|Lasso|1.227134e+12| 1.107761e+06| 860146.785070 |
-|Linear Regression|1.227149e+12|    1.107767e+06|860146.628601|
-|Ada Boosting Regressor|1.358955e+12|1.165742e+06|922655.947784|
-|Decision Tree Regressor    |1.898786e+12|1.377964e+06|545150.062500|
+![plot with results](https://snipboard.io/ru8mR2.jpg)
 * Plot containing results of models:
 ![plot with model results](https://snipboard.io/ec4rdV.jpg)
  
