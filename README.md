@@ -2,6 +2,11 @@
 ## NY Apartment listing price prediction using Zillow API
  
 ![App Screenshot](https://cdn.vox-cdn.com/thumbor/n__W88RH2lLfwikcCFBISLOxreE=/0x0:2000x1333/1200x800/filters:focal(837x619:1157x939)/cdn.vox-cdn.com/uploads/chorus_image/image/65368722/171109_06_27_03_5DS_9686.0.jpg)
+
+---
+### Disclaimer
+* Please open all .ipynb notebooks in google.colab , because github has problems with showing visualization packages.
+![disclaimer](https://snipboard.io/uHI1v5.jpg)
  
 ### Project Overview
 ---
