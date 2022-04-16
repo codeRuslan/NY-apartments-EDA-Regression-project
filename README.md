@@ -91,3 +91,5 @@ Plot shows how complex model arrive at their prediction for randomly choosen ran
 [1] https://www.kaggle.com/code/janiobachmann/melbourne-comprehensive-housing-market-analysis 
 
 [2] https://rapidapi.com/apimaker/api/zillow-com1/
+
+[3] https://www.kaggle.com/code/dansbecker/advanced-uses-of-shap-values
