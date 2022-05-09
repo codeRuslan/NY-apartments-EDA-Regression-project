@@ -35,7 +35,7 @@
 9. Fine tuning
 10. Interpretability
 ---
-### Feature Engineered features ⚙️⚙️⚙️
+### Feature Engineered features 
 * `distance`- Feature that was created by using information from `longitude` and `latitude` features and then using coordinates of Empire State building. Finally, by using *Haversine Formula* distance between two points were calculated.
 * Where distance to the Empire State Building was used?  - Because this resulted in a better score compared with other places used for this feature. You could see in the code block below which coordinates were also used and tested for `distance` feature.
 ``` df['latitude_empier_state_building'] =40.748500421093865
@@ -73,7 +73,7 @@ gridsearch = GridSearchCV(model, param_grid=params, scoring="neg_mean_squared_er
 |Gradient Boosting Regressor| 8.065473e+10| 283997.761376|204007.123004|
  
 ---
-### Interpretability of model ⚙️⚙️⚙️
+### Interpretability of model 
 * For this purpose, SHAP package were used.
 Mean SHAP value
 ![shap value](https://snipboard.io/LAe2Z6.jpg)
